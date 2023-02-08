@@ -14,8 +14,8 @@ public class WindowDemo extends JFrame implements ActionListener, MouseListener
     // gui components that are contained in this frame:
     private JPanel topPanel, bottomPanel;    // top and bottom panels in the main window
     private JLabel instructionLabel;        // a text label to tell the user what to do
-    private JLabel infoLabel;            // a text label to show the coordinate of the selected square
-    private JButton topButton;                // a 'reset' button to appear in the top panel
+    private JLabel infoLabel,yo;            // a text label to show the coordinate of the selected square
+    private JButton topButton,start;                // a 'reset' button to appear in the top panel
     private GridSquare [][] gridSquares;    // squares to appear in grid formation in the bottom panel
     private int rows,columns,counter;                // the size of the grid
     
@@ -29,7 +29,7 @@ public class WindowDemo extends JFrame implements ActionListener, MouseListener
     {
         this.rows = rows;
         this.columns = columns;
-        this.setSize(600,600);
+        this.setSize(1000,1000);
         this.counter = 0;
         // first create the panels
         topPanel = new JPanel();
@@ -37,14 +37,16 @@ public class WindowDemo extends JFrame implements ActionListener, MouseListener
         
         bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridLayout(rows, columns));
-        bottomPanel.setSize(500,500);
+        bottomPanel.setSize(200,200);
         
         // then create the components for each panel and add them to it
         
         // for the top panel:
         instructionLabel = new JLabel("Click the Squares!");
         infoLabel = new JLabel("No square clicked yet.");
+    
         topButton = new JButton("Reset");
+        start= new JButton("Start new game");
         topButton.addActionListener(this);            // IMPORTANT! Without this, clicking the square does nothing.
         
         topPanel.add(instructionLabel);
@@ -55,23 +57,35 @@ public class WindowDemo extends JFrame implements ActionListener, MouseListener
         // for the bottom panel:    
         // create the squares and add them to the grid
         gridSquares = new GridSquare[rows][columns];
-        for ( int x = 1; x < rows; x ++)
+        for ( int x = 0; x < rows; x ++)
         {
-            for ( int y = 1; y < columns; y ++)
+            for ( int y = 0; y < columns; y ++)
             {
                 gridSquares[x][y] = new GridSquare(x, y);
-                gridSquares[x][y].setSize(40, 40);
+
                 bottomPanel.add(gridSquares[x][y]);
-                gridSquares[x][y].setColor(2);
             }}
         
-        for ( int x = 1; x < 6; x ++){    
-            
-            for( int z = 6-x ; z<= 6+ x ; z++)
-            {
-                gridSquares[x][z].setColor(0);
-                gridSquares[x][z].addMouseListener(this);
+        for ( int x = 0; x < 14; x ++){    
+            if(x<5){
+                for( int z = 6-x ; z<= 6+ x ; z++){
+                gridSquares[x][z].setColor(2);
+                gridSquares[x][z].setSize(300, 300);
+                gridSquares[x][z].addMouseListener(this);}
             }
+            if(x>=5 && x<=7){
+                for( int z = 6-5 ; z<= 6+ 5 ; z++){
+                gridSquares[x][z].setColor(2);
+                gridSquares[x][z].setSize(300, 300);
+                gridSquares[x][z].addMouseListener(this);}
+            }
+            if(x>=8 && x<=12){
+                for( int z = x-6 ; z<=18-x  ; z++){
+                gridSquares[x][z].setColor(2);
+                gridSquares[x][z].setSize(300, 300);
+                gridSquares[x][z].addMouseListener(this);}
+            }
+
         }
         
         // now add the top and bottom panels to the main frame

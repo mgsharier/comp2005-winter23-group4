@@ -15,25 +15,28 @@ import javax.swing.*;
  */
 public class GridSquare extends JPanel
 {
-    private int xcoord, ycoord;  // location in the grid
+    private int xcoord, ycoord;  
+    private JLabel yoo;// location in the grid
     
     // constructor takes the x and y coordinates of this square
     public GridSquare(int xcoord, int ycoord)
     {
         super();
-        this.setSize(50,50);
+        this.setSize(100,100);
         this.xcoord = xcoord;
         this.ycoord = ycoord;
+        this.yoo= new JLabel("Yoo");
     }
     
     // if the decider is even, it chooses black, otherwise white (for 'column+row' will allow a chequerboard effect)
     public void setColor( int decider)
     {
         if(decider==2){
-            this.setBackground(Color. DARK_GRAY);
+            this.setBackground(Color.RED);
+            this.add(yoo);
+            
         }
-        else
-           this.setBackground(Color.RED);
+
     }
     
     // if the square is black it becomes white, and vice-versa
