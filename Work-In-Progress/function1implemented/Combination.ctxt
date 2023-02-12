@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Combination
+comment1.params=value1\ value2
+comment1.target=Combination(int,\ int)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Combination\n
+comment2.params=
+comment2.target=int\ getValue1()
+comment3.params=
+comment3.target=int\ getValue2()
+comment4.params=val1
+comment4.target=void\ setValue1(int)
+comment5.params=val2
+comment5.target=void\ setValue2(int)
+numComments=6
